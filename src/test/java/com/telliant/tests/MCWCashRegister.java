@@ -3,6 +3,7 @@ package com.telliant.tests;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.telliant.core.web.BaseClass;
@@ -10,7 +11,7 @@ import com.telliant.core.web.ExcelMethods;
 import com.telliant.pageObjects.MCWCashRegisterSetup;
 import com.telliant.pageObjects.LoginPage;
 
-
+@Listeners(com.telliant.core.web.Reporting.class)
 public class MCWCashRegister extends BaseClass {
 	
 	LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
