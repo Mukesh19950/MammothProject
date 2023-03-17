@@ -46,6 +46,10 @@ public class MCWCashRegister extends BaseClass {
 		cashregister.enterGoal("Goal", ExcelMethods.getNum("Cash_Register", "Goal", 1));
 		clickElement("GoalSave");
 		
+		
+		
+		
+		
 	}
 
 	
