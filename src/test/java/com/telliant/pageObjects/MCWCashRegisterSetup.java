@@ -52,4 +52,6 @@ public class MCWCashRegisterSetup extends BaseClass {
 		clickElement("BusinessGoal");
 	}
 
+	
+	
 }
