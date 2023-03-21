@@ -41,7 +41,9 @@ public class LoginPage extends BaseClass {
 			
 			clickElement("loginBtn");
 		}
-	public void proceed() {
+	public void proceed() throws InterruptedException {
+		Thread.sleep(7000);
+//		selectDropdownByValue("location", "116");
 		waitForElementClickable("proceed");
 		clickElement("proceed");
 	}

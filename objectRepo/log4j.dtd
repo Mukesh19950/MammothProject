@@ -1,2 +1,0 @@
-<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
-<layout class="org.apache.log4j.PatternLayout">

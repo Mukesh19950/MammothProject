@@ -12,7 +12,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -56,7 +55,7 @@ public class WebDriverRoot {
 	DesiredCapabilities cap = new DesiredCapabilities();
 
 	public static AppiumDriver<MobileElement> appiumDriver;
-	
+
 	public DesiredCapabilities getCapabilities() {
 		try {
 			BufferedReader r = new BufferedReader(new FileReader(""));
@@ -119,12 +118,12 @@ public class WebDriverRoot {
 
 	public void type(String locator, String textToType) {
 		WebElement ele2 = getElement(locator);
-		//scrollToElement(locator);
+		// scrollToElement(locator);
 		try {
 			if (ele2.isEnabled()) {
 				waitForElementVisible(locator);
 				waitForElementClickable(locator);
-				JavascriptExecutor jse = (JavascriptExecutor)driver;
+				JavascriptExecutor jse = (JavascriptExecutor) driver;
 				jse.executeScript("arguments[0].click()", getElement(locator));
 				ele2.clear();
 				ele2.sendKeys(textToType);
@@ -135,9 +134,7 @@ public class WebDriverRoot {
 		}
 
 	}
-	
-	
-	
+
 	public static WebElement getElement(String locator) {
 		String repolocator = ObjRepo.getProperty(locator).trim();
 		String[] tokens = repolocator.split(";");
@@ -229,20 +226,19 @@ public class WebDriverRoot {
 
 	public static void waitForElementClickable(String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getElement(locator)));
-			
+
 	}
-	
+
 	public static void waitForElementVisible(String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(getElement(locator)));
 	}
-	
+
 	public static void waitForElementVisibleof(String locator) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions
-				.visibilityOf(getElement(locator)));
+		wait.until(ExpectedConditions.visibilityOf(getElement(locator)));
 
-		}
-	
+	}
+
 	public static void scrollToElement(String locator) {
 		element = getElement(locator);
 		try {
@@ -256,10 +252,10 @@ public class WebDriverRoot {
 			System.err.println("Scrolling to element is not working ");
 		}
 	}
-	
+
 	public static void ScrollElement2() {
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
-		 js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
 	}
 
 	public static void pressKeyDown(String locator) {
@@ -339,14 +335,14 @@ public class WebDriverRoot {
 		 * case "chrome": System.setProperty("webdriver.chrome.driver",
 		 * "./drivers/chrome/chromedriver.exe"); driver = new ChromeDriver();
 		 * System.out.println("Launching " + browserName + " Browser");
-		 * Reporting.testReport.get().pass("Launching " + browserName +
-		 * " Browser"); break;
+		 * Reporting.testReport.get().pass("Launching " + browserName + " Browser");
+		 * break;
 		 */
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			options = new ChromeOptions();
-			//options.setExperimentalOption("useAutomationExtension", false);
-			//options.setExperimentalOption(browserName, ObjRepo);
+			// options.setExperimentalOption("useAutomationExtension", false);
+			// options.setExperimentalOption(browserName, ObjRepo);
 			driver = new ChromeDriver(options);
 			break;
 		case "ie":
@@ -363,7 +359,7 @@ public class WebDriverRoot {
 		driver.manage().window().maximize();
 		ngWebDriver = new NgWebDriver((JavascriptExecutor) driver);
 		ngWebDriver.waitForAngularRequestsToFinish();
-		//Assert.assertEquals(driver.getCurrentUrl(), url);
+		// Assert.assertEquals(driver.getCurrentUrl(), url);
 	}
 
 	public static void mouseOver(String locator) {
@@ -373,8 +369,8 @@ public class WebDriverRoot {
 	}
 
 	/*
-	 * Method to select the dropdown using "select by visible text" Pass Value
-	 * as String
+	 * Method to select the dropdown using "select by visible text" Pass Value as
+	 * String
 	 */
 	public static void selectDropdownByVisibleTxt(String locator, String VisibleText) {
 		element = getElement(locator);
@@ -385,8 +381,7 @@ public class WebDriverRoot {
 	}
 
 	/*
-	 * Method to select the dropdown using "select by index", pass IndexValue as
-	 * int
+	 * Method to select the dropdown using "select by index", pass IndexValue as int
 	 */
 	public static void selectDropdownByIndex(String locator, int IndexValue) {
 		element = getElement(locator);
@@ -397,8 +392,7 @@ public class WebDriverRoot {
 	}
 
 	/*
-	 * Method to select the dropdown using "select by value", pass Value as
-	 * String
+	 * Method to select the dropdown using "select by value", pass Value as String
 	 */
 	public static void selectDropdownByValue(String locator, String Value) {
 		element = getElement(locator);
@@ -493,9 +487,8 @@ public class WebDriverRoot {
 	public static String getPageTitle() {
 		return driver.getTitle();
 	}
-	
-	
-	public static boolean clickElement1(AppiumDriver<MobileElement> appiumDriver ,String locator) {
+
+	public static boolean clickElement1(AppiumDriver<MobileElement> appiumDriver, String locator) {
 		try {
 			boolean elementIsClickable = getElement(locator).isEnabled();
 			while (elementIsClickable) {
@@ -509,17 +502,16 @@ public class WebDriverRoot {
 		}
 		return false;
 	}
-	
-	
-	public static boolean clickElement(String locator,String xpathAttached) {
+
+	public static boolean clickElement(String locator, String xpathAttached) {
 		try {
-			boolean elementIsClickable = getElement(locator,xpathAttached).isEnabled();
+			boolean elementIsClickable = getElement(locator, xpathAttached).isEnabled();
 			while (elementIsClickable) {
-				waitForElementVisible(locator,xpathAttached);
-				waitForElementClickable(locator,xpathAttached);
+				waitForElementVisible(locator, xpathAttached);
+				waitForElementClickable(locator, xpathAttached);
 //				JAVASCRIPTEXECUTOR JSE = (JAVASCRIPTEXECUTOR)DRIVER;
 //				JSE.EXECUTESCRIPT("ARGUMENTS[0].CLICK()", GETELEMENT(LOCATOR));
-				getElement(locator,xpathAttached).click();
+				getElement(locator, xpathAttached).click();
 				return true;
 			}
 
@@ -529,23 +521,23 @@ public class WebDriverRoot {
 		}
 		return false;
 	}
-	
-	public static void waitForElementClickable(String locator,String xpathAttached) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getElement(locator,xpathAttached)));
-			
-	}
-	
-	public static void waitForElementVisible(String locator,String xpathAttached) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(getElement(locator,xpathAttached)));
-	}
-	
 
-	public static WebElement getElement(String locator,String xpathAttached) {
+	public static void waitForElementClickable(String locator, String xpathAttached) {
+		new WebDriverWait(driver, 30)
+				.until(ExpectedConditions.elementToBeClickable(getElement(locator, xpathAttached)));
+
+	}
+
+	public static void waitForElementVisible(String locator, String xpathAttached) {
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(getElement(locator, xpathAttached)));
+	}
+
+	public static WebElement getElement(String locator, String xpathAttached) {
 		String repolocator = ObjRepo.getProperty(locator).trim();
 		String[] tokens = repolocator.split(";");
 		String locatorType = tokens[0];
-		String strlocator = tokens[1]+xpathAttached.trim()+tokens[2];
-		 //System.out.println(tokens[0]+"  Xpathref "+strlocator);
+		String strlocator = tokens[1] + xpathAttached.trim() + tokens[2];
+		// System.out.println(tokens[0]+" Xpathref "+strlocator);
 		WebElement webElement = null;
 
 		try {
@@ -582,96 +574,97 @@ public class WebDriverRoot {
 		return webElement;
 
 	}
-	
-	//Input Types for below randStrGen method 
-	  /* 
-    len---> Output string Length 
-    RandmTyp
-    ULN---> Upper case , Lower case & with Number
-    UN----> Upper case &  with Number
-    LN----> Lower case & with Number
-    UL----> Upper case & Lower case
-    U-----> Upper case
-    L-----> Lower case 
-    N-----> Number */
-	
-	public static String randStrGen(String RandmTyp,int len) {
 
-	    // create a string of uppercase and lowercase characters and numbers
-	    String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-	    String numbers = "0123456789";
-	    String alphaNumeric = null;
-	 
-	    
-	    //combining  Requried  combination
-	    
-	    	if(RandmTyp=="ULN") {  
-	        	  alphaNumeric = upperAlphabet + lowerAlphabet + numbers;
-	    	}else if(RandmTyp=="UN") { 
-	        	 alphaNumeric = upperAlphabet + numbers; 
-	    	}else if(RandmTyp=="LN") {  
-	        	 alphaNumeric = lowerAlphabet + numbers; 
-	    	}else if(RandmTyp=="UL") {  
-	        	 alphaNumeric = upperAlphabet+lowerAlphabet; 
-	    	}else if(RandmTyp== "U") {   
-	        	 alphaNumeric = upperAlphabet; 
-	    	}else if(RandmTyp=="L") {   
-	        	 alphaNumeric = lowerAlphabet;
-	    	}else if(RandmTyp=="N") {   
-	        	 alphaNumeric = numbers; 
-	        }
-	
-	    // create random string builder
-	    StringBuilder sb = new StringBuilder();
+	// Input Types for below randStrGen method
+	/*
+	 * len---> Output string Length RandmTyp ULN---> Upper case , Lower case & with
+	 * Number UN----> Upper case & with Number LN----> Lower case & with Number
+	 * UL----> Upper case & Lower case U-----> Upper case L-----> Lower case N----->
+	 * Number
+	 */
 
-	    // create an object of Random class
-	    Random random = new Random();
+	public static String randStrGen(String RandmTyp, int len) {
 
-	    // specify length of random string
-	    int length = len;
+		// create a string of uppercase and lowercase characters and numbers
+		String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+		String numbers = "0123456789";
+		String alphaNumeric = null;
 
-	    for(int i = 0; i < length; i++) {
+		// combining Requried combination
 
-	      // generate random index number
-	      int index = random.nextInt(alphaNumeric.length());
+		if (RandmTyp == "ULN") {
+			alphaNumeric = upperAlphabet + lowerAlphabet + numbers;
+		} else if (RandmTyp == "UN") {
+			alphaNumeric = upperAlphabet + numbers;
+		} else if (RandmTyp == "LN") {
+			alphaNumeric = lowerAlphabet + numbers;
+		} else if (RandmTyp == "UL") {
+			alphaNumeric = upperAlphabet + lowerAlphabet;
+		} else if (RandmTyp == "U") {
+			alphaNumeric = upperAlphabet;
+		} else if (RandmTyp == "L") {
+			alphaNumeric = lowerAlphabet;
+		} else if (RandmTyp == "N") {
+			alphaNumeric = numbers;
+		}
 
-	      // get character specified by index
-	      // from the string
-	      char randomChar = alphaNumeric.charAt(index);
+		// create random string builder
+		StringBuilder sb = new StringBuilder();
 
-	      // append the character to string builder
-	      sb.append(randomChar);
-	    }
-	    String randomString = sb.toString();
-	    
-	    return randomString;
+		// create an object of Random class
+		Random random = new Random();
+
+		// specify length of random string
+		int length = len;
+
+		for (int i = 0; i < length; i++) {
+
+			// generate random index number
+			int index = random.nextInt(alphaNumeric.length());
+
+			// get character specified by index
+			// from the string
+			char randomChar = alphaNumeric.charAt(index);
+
+			// append the character to string builder
+			sb.append(randomChar);
+		}
+		String randomString = sb.toString();
+
+		return randomString;
 	}
+
 	public static void waitForElementinvisibile(String locator) {
 		new WebDriverWait(driver, 50).until(ExpectedConditions.invisibilityOf(getElement(locator)));
-			
+
 	}
-	public static void waitTillElementgetsDisappear(String xpath,int MaxPollingCount,int pollingWaitTimeUnit) throws InterruptedException{
+
+	public static void waitTillElementgetsDisappear(String xpath, int MaxPollingCount, int pollingWaitTimeUnit)
+			throws InterruptedException {
 		int webElementSize;
-		for(int i=0;i<MaxPollingCount;i++){
+		for (int i = 0; i < MaxPollingCount; i++) {
 			Thread.sleep(pollingWaitTimeUnit);
 			webElementSize = getElements(xpath).size();
-			if(webElementSize==0){
-				//Thread.sleep(250);
+			if (webElementSize == 0) {
+				// Thread.sleep(250);
 				break;
 			}
 		}
 	}
-	public static void waitTillElementgetsvisible(String xpath,int MaxPollingCount,int pollingWaitTimeUnit) throws InterruptedException{
-	       int webElementSize;
-			for(int i=0;i<MaxPollingCount;i++){
-				Thread.sleep(pollingWaitTimeUnit);
-				webElementSize = getElements(xpath).size();
-				if(webElementSize>0){
-					//Thread.sleep(250);
-					break;
-				}
+
+	public static void waitTillElementgetsvisible(String xpath, int MaxPollingCount, int pollingWaitTimeUnit)
+			throws InterruptedException {
+		int webElementSize;
+		for (int i = 0; i < MaxPollingCount; i++) {
+			Thread.sleep(pollingWaitTimeUnit);
+			webElementSize = getElements(xpath).size();
+			if (webElementSize > 0) {
+				// Thread.sleep(250);
+				break;
 			}
 		}
+	}
+	
 
 }
