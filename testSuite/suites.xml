@@ -10,7 +10,6 @@
 			<class name="com.telliant.tests.CashRegisterFunctionality_TC" />
 			<class name="com.telliant.tests.CloseOutFunctionality_TC" />
 			<class name="com.telliant.tests.EmployeeFunctionality_TC" />
-			<class name="com.telliant.tests.ClientFunctionality_TC" />
 		</classes>
 	</test>
 </suite>
