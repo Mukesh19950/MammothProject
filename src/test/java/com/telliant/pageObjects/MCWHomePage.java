@@ -1,6 +1,5 @@
 package com.telliant.pageObjects;
 
-import org.openqa.selenium.JavascriptExecutor;
 
 import com.telliant.core.web.WebDriverRoot;
 

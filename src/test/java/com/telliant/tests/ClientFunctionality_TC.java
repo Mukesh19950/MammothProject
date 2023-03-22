@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import com.telliant.core.web.BaseClass;
 import com.telliant.pageObjects.AddNewClient;
-import com.telliant.pageObjects.AddNewEmployee;
+
 import com.telliant.pageObjects.LoginPage;
 
 public class ClientFunctionality_TC extends BaseClass {

@@ -8,9 +8,9 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.telliant.core.web.BaseClass;
-import com.telliant.core.web.ExcelMethods;
+
 import com.telliant.pageObjects.CashRegisterSetup;
-import com.telliant.pageObjects.CloseOutRegister;
+
 import com.telliant.pageObjects.LoginPage;
 import com.telliant.pageObjects.AddNewEmployee;
 
