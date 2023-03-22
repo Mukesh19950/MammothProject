@@ -21,8 +21,6 @@ public class CashRegisterFunctionality_TC extends BaseClass {
 	CashRegisterSetup cashregister = PageFactory.initElements(driver, CashRegisterSetup.class);
 	AddNewEmployee addemployee = PageFactory.initElements(driver, AddNewEmployee.class);
 
-	int rowNo = 1;
-
 	@Test(testName = "CASH_REG001", description = "Verify the functionality of Cash Register", priority = 1)
 	public void CashRegister_Setup() throws InterruptedException {
 
@@ -40,6 +38,7 @@ public class CashRegisterFunctionality_TC extends BaseClass {
 		waitTillElementgetsvisible("success", 200, 50);
 		Assert.assertEquals(getText("success"), "Cash Register updated successfully!");
 		loginPage.logout();
+	
 	}
 
 }
