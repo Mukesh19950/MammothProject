@@ -24,7 +24,7 @@ public class ReportManager extends WebDriverRoot {
 		htmlReporter.config().setTheme(Theme.STANDARD);
 		htmlReporter.config().setDocumentTitle("Execution | Result");
 		htmlReporter.config().setEncoding("utf-8");
-		htmlReporter.config().setReportName("Project: QwikTime");
+		htmlReporter.config().setReportName("Project: MCW");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("Organization", "Telliant QA");
@@ -45,7 +45,7 @@ public class ReportManager extends WebDriverRoot {
 		screenshotName = date.toString().replace(":", "_").replace(" ", "_") + " " + name + ".png";
 
 		try {
-			FileUtils.copyFile(scrFile, new File("./" + "/reports/" + screenshotName));
+			FileUtils.copyFile(scrFile, new File("./" + "/Screenshots/" + screenshotName));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

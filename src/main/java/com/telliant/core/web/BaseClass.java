@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -15,6 +16,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -23,6 +25,8 @@ public class BaseClass extends WebDriverRoot {
 	public static String methodName;
 	public static String packageName;
 	public static String testname;
+	public SoftAssert asserts;
+	public Assert hardAssertion;
 	
 	DesiredCapabilities cap = new DesiredCapabilities();
 	
@@ -32,7 +36,7 @@ public class BaseClass extends WebDriverRoot {
 	@Parameters("Env")
 	public void testSetup(@Optional String env) throws FileNotFoundException, IOException {
 		System.out.println("Suite Before");
-
+		
 		
 		ObjRepo = GeneralMethods.loadProperty("./objectRepo/webObject.properties");
 		config = GeneralMethods.loadProperty("./objectRepo/config.properties");
@@ -41,16 +45,13 @@ public class BaseClass extends WebDriverRoot {
 		launchBrowser();
 		driver.manage().deleteAllCookies();
 
-		//driver.get("chrome://settings/clearBrowserData");
-		//driver.findElement(By.xpath("//*[@id='clearBrowsingDataConfirm']")).click();
-
 	}
 	
 
 	@Parameters("testName")
 	@BeforeMethod(alwaysRun = true)
 	public void testSetup(@Optional String testName, @Optional Method method) throws Exception {
-
+		asserts= new SoftAssert();
 		String testCaseName = method.getAnnotation(Test.class).testName();
 		methodName = method.getName();
 		packageName = getClass().getPackage().getName();
@@ -64,7 +65,7 @@ public class BaseClass extends WebDriverRoot {
 
 	@AfterSuite
 	public void tearDown() {
-		//Reporting.testReport.get().info(MarkupHelper.createLabel("Test ID: " + testname, ExtentColor.BLUE));
+		Reporting.testReport.get().info(MarkupHelper.createLabel("Test ID: " + testname, ExtentColor.BLUE));
 		//driver.close();
 	}
 }

@@ -99,8 +99,8 @@ public class Reporting implements ITestListener  {
 		
 		if (extent != null) {
 			
-			testReport.get().info(MarkupHelper.createLabel("Package Path: "+ BaseClass.packageName, ExtentColor.BLUE));
-			testReport.get().info(MarkupHelper.createLabel("Current class Name: " + getClass().getSimpleName(), ExtentColor.BLUE));
+//			testReport.get().info(MarkupHelper.createLabel("Package Path: "+ BaseClass.packageName, ExtentColor.BLUE));
+//			testReport.get().info(MarkupHelper.createLabel("Current class Name: " + getClass().getSimpleName(), ExtentColor.BLUE));
 			//testReport.get().info("Browser Quit: Success");
 			extent.flush();
 		}

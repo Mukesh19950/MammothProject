@@ -231,6 +231,7 @@ public class WebDriverRoot {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getElement(locator)));
 			
 	}
+	
 	public static void waitForElementVisible(String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(getElement(locator)));
 	}
@@ -646,5 +647,31 @@ public class WebDriverRoot {
 	    
 	    return randomString;
 	}
-
+	public static void waitForElementinvisibile(String locator) {
+		new WebDriverWait(driver, 50).until(ExpectedConditions.invisibilityOf(getElement(locator)));
+			
+	}
+	public static void waitTillElementgetsDisappear(String xpath,int MaxPollingCount,int pollingWaitTimeUnit) throws InterruptedException{
+		int webElementSize;
+		for(int i=0;i<MaxPollingCount;i++){
+			Thread.sleep(pollingWaitTimeUnit);
+			webElementSize = getElements(xpath).size();
+			if(webElementSize==0){
+				//Thread.sleep(250);
+				break;
+			}
+		}
+	}
+	public static void waitTillElementgetsvisible(String xpath,int MaxPollingCount,int pollingWaitTimeUnit) throws InterruptedException{
+	       int webElementSize;
+			for(int i=0;i<MaxPollingCount;i++){
+				Thread.sleep(pollingWaitTimeUnit);
+				webElementSize = getElements(xpath).size();
+				if(webElementSize>0){
+					//Thread.sleep(250);
+					break;
+				}
+			}
+		}
+	
 }
