@@ -45,17 +45,15 @@ public class AddNewEmployee extends BaseClass {
 		selectDropdownByValue("ratelocation", ExcelMethods.getNum("Employees", "RATELOCATION", 1));
 
 		enterRate(ExcelMethods.getNum("Employees", "RATEPEROUR", 1));
-		
+
 		enterHireDate(ExcelMethods.getNum("Employees", "DATEOFHIRE", 1));
 		clickElement("dateofhire");
 
 		addLocation();
 		saveEmployee();
-		
-		
+
 	}
-	
-	
+
 	public void enterFirstName(String firstName) {
 
 		type("fname", firstName);
@@ -148,31 +146,31 @@ public class AddNewEmployee extends BaseClass {
 		clickElement("save");
 
 	}
-	
+
 	public void editEmployeeFields() throws InterruptedException {
-		
+
 		enterSearch(ExcelMethods.getData("Employees", "FIRSTNAME", 1));
 		Thread.sleep(3000);
-		clickElement("empedit");	
+		clickElement("empedit");
 		Thread.sleep(3000);
 		scrollToElement("email");
 		enterEmailid(ExcelMethods.getData("Employees", "EMAIL", 1));
 		saveEmployee();
 		getElement("empsearch").clear();
-		
+
 	}
-	
+
 	public void enterSearch(String search) {
 		waitForElementClickable("empsearch");
 		type("empsearch", search);
 	}
-	
+
 	public void deleteEmployeeFields() throws InterruptedException {
 		enterSearch(ExcelMethods.getData("Employees", "FIRSTNAME", 1));
 		Thread.sleep(2000);
-		clickElement("clientdelete");	
-		clickElement("deleteconfirmclient");
-		
+		clickElement("clientdelete");
+		clickElement("deleteconfirm");
+
 	}
 
 }

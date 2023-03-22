@@ -48,6 +48,7 @@ public class MCW extends BaseClass implements ITestListener{
 		MCWSystemsetup.selectcity();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
+		
 		//System.out.println("64"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Location added successfully !");
 	}

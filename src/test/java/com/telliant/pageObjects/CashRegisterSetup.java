@@ -1,16 +1,12 @@
 package com.telliant.pageObjects;
 
-
 import com.telliant.core.web.BaseClass;
 import com.telliant.core.web.ExcelMethods;
 
-
-
 public class CashRegisterSetup extends BaseClass {
-	
-	
+
 	public void coinsbills() throws InterruptedException {
-		
+
 		enterCoins("Coins_Pennies", ExcelMethods.getNum("Cash_Register", "Coins", 1));
 		enterCoins("Coins_Nickels", ExcelMethods.getNum("Cash_Register", "Coins", 2));
 		enterCoins("Coins_Dimes", ExcelMethods.getNum("Cash_Register", "Coins", 3));
@@ -24,8 +20,7 @@ public class CashRegisterSetup extends BaseClass {
 		enterBills("Bills_100s", ExcelMethods.getNum("Cash_Register", "Bills", 6));
 		enterHrs("TimeHrs", ExcelMethods.getNum("Cash_Register", "TimeHrs", 1));
 		enterHrs("TimeMin", ExcelMethods.getNum("Cash_Register", "TimeMin", 1));
-		
-		
+
 	}
 
 	public void navigateToAdmin() throws InterruptedException {
@@ -39,16 +34,15 @@ public class CashRegisterSetup extends BaseClass {
 		waitForElementVisible("CashRegister");
 		clickElement("CashRegister");
 	}
-	
-	public void performactions() throws InterruptedException
-	{
+
+	public void performactions() throws InterruptedException {
 		selectDropdownByVisibleTxt("ShopStatus", "Open");
 		clickElement("ShopSave");
 		Thread.sleep(3000);
 		clickElement("BusinessGoal");
-	    enterGoal("Goal", ExcelMethods.getNum("Cash_Register", "Goal", 1));		
-	    clickElement("GoalSave");
-	    
+		enterGoal("Goal", ExcelMethods.getNum("Cash_Register", "Goal", 1));
+		clickElement("GoalSave");
+
 	}
 
 	public void enterCoins(String locator, String Coins) {
@@ -77,6 +71,4 @@ public class CashRegisterSetup extends BaseClass {
 
 	}
 
-	
-	
 }

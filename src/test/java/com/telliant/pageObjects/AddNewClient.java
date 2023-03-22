@@ -24,18 +24,15 @@ public class AddNewClient extends BaseClass {
 		scrollToElement("clientsave");
 		clickElement("clientsave");
 
-
 	}
 
-	public void enterFirstname(String firstname)
-	{
+	public void enterFirstname(String firstname) {
 
 		type("clientfname", firstname);
 
 	}
 
-	public void enterLastName(String lastname)
-	{
+	public void enterLastName(String lastname) {
 
 		type("clientlname", lastname);
 	}
@@ -50,7 +47,6 @@ public class AddNewClient extends BaseClass {
 		type("clientemail", email);
 	}
 
-
 	public void enterMobile(String mobile) {
 
 		type("clientphone", mobile);
@@ -60,7 +56,6 @@ public class AddNewClient extends BaseClass {
 
 		type("clientzip", zip);
 	}
-
 
 	public void enterMake(String make) throws InterruptedException {
 
@@ -93,19 +88,17 @@ public class AddNewClient extends BaseClass {
 	}
 
 	public void navigateClients() throws InterruptedException {
-		// Thread.sleep(5000);
 		waitForElementVisible("client");
 		clickElement("client");
 		Thread.sleep(4000);
 		clickElement("addnewclient");
-
 
 	}
 
 	public void editClientFields() throws InterruptedException {
 
 		enterSearch(ExcelMethods.getData("Clients", "FIRSTNAME", 1));
-		clickElement("clientedit");	
+		clickElement("clientedit");
 		Thread.sleep(3000);
 		scrollToElement("clientemail");
 		enterEmailid(ExcelMethods.getData("Clients", "EMAIL", 1));
@@ -119,11 +112,11 @@ public class AddNewClient extends BaseClass {
 		type("clientsearch", search);
 		Thread.sleep(6000);
 	}
-	
+
 	public void deleteClientFields() throws InterruptedException {
 		enterSearch(ExcelMethods.getData("Clients", "FIRSTNAME", 1));
-		clickElement("empdelete");	
+		clickElement("empdelete");
 		clickElement("deleteconfirm");
-		
+
 	}
 }
