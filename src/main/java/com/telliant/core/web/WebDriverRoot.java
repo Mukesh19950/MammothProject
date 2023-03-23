@@ -345,6 +345,7 @@ public class WebDriverRoot {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			options = new ChromeOptions();
+			options.addArguments("--headless");
 			//options.setExperimentalOption("useAutomationExtension", false);
 			//options.setExperimentalOption(browserName, ObjRepo);
 			driver = new ChromeDriver(options);
