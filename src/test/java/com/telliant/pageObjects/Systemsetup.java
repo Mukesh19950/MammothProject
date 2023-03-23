@@ -69,6 +69,7 @@ public class Systemsetup extends WebDriverRoot {
 	  waitTillElementgetsDisappear("spinner",100,100); }
 	 
 	public void searchtxtbox() throws InterruptedException {
+		waitForElementClickable("searchtxtbox");
 		type("searchtxtbox", ExcelMethods.getData("Sheet1", "Name", 1));
 	}
 
@@ -78,7 +79,7 @@ public class Systemsetup extends WebDriverRoot {
 	}
 
 	public void editbtn() throws InterruptedException {
-		waitForElementClickable("editbtn");
+		waitForElementVisible("editbtn");
 		clickElement("editbtn");
 		Thread.sleep(3000);
 	}

@@ -32,8 +32,8 @@ public class Deals extends WebDriverRoot{
 		clickElement("savebtn");
 	}
 	public void editDeals() {
-		waitForElementClickable("editbtn");
-		clickElement("editbtn");
+		waitForElementClickable("dealsEditbtn");
+		clickElement("dealsEditbtn");
 	}
 	public void deleteDeals() throws InterruptedException {
 		Thread.sleep(2000);

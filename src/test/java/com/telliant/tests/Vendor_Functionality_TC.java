@@ -35,7 +35,7 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWVendor.navigateToVendor();
@@ -80,5 +80,6 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 		waitTillElementgetsvisible("successmsg", 200, 50);
 		System.out.println("82"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Vendor deleted successfully !");
+		loginPage.logout();
 	}
 }

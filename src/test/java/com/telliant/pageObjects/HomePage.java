@@ -9,7 +9,7 @@ public class HomePage extends WebDriverRoot {
 	
 	public void navigateToAdmin() throws InterruptedException {
 		Thread.sleep(3000);
-		waitForElementVisible("adminBtn");
+		waitTillElementgetsvisible("adminBtn", 200,100);
 		clickElement("adminBtn");
 		}
 	public void navigateToSystemSetup() throws InterruptedException {

@@ -35,7 +35,7 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWProduct.navigateToProduct();
@@ -73,5 +73,6 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
 		Assert.assertEquals( getText("successmsg"),"Product deleted successfully !");
+		loginPage.logout();
 	}
 }

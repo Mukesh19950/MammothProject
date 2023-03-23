@@ -3,7 +3,14 @@
 <suite name="SmokeTest_Suite" configfailurepolicy="continue">
 	<test name="Emp_Creation">
 		<classes>
-			<class name="com.telliant.tests.MCWVendorTC" />
+			<class name="com.telliant.tests.Basic_Functionality_TC" />
+			<class name="com.telliant.tests.Service_Functionality_TC" />
+			<class name="com.telliant.tests.Product_Functionality_TC" />
+			<class name="com.telliant.tests.Vendor_Functionality_TC" />
+			<class name="com.telliant.tests.Membership_Functionality_TC" />
+			<class name="com.telliant.tests.Ads_Functionality_TC" />
+			<class name="com.telliant.tests.Deals_Functionality_TC" />
+			<class name="com.telliant.tests.Bonus_Functionality_TC" />
 		</classes>
 	</test>
 </suite>

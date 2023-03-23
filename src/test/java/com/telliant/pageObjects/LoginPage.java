@@ -49,7 +49,10 @@ public class LoginPage extends BaseClass {
 
 	public void logout() {
 		
-		waitForElementClickable("logout");
-		clickElement("logout");
+		waitForElementClickable("logoutbtn");
+		clickElement("logoutbtn");
+		waitForElementClickable("logoutcfnbtn");
+		clickElement("logoutcfnbtn");
 	}
+
 }

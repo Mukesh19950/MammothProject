@@ -23,7 +23,8 @@ public class Service extends WebDriverRoot {
 		waitForElementClickable("serviceTypedrpdwn");
 		clickElement("serviceTypedrpdwn");
 	}
-	public void selectType() {
+	public void selectType() throws InterruptedException {
+		Thread.sleep(2000);
 		pressKeyDown("serviceTypedrpdwn");
 		pressKeyEnter("serviceTypedrpdwn");
 	}

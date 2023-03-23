@@ -5,22 +5,22 @@ import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.ITestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.telliant.core.web.BaseClass;
+import com.telliant.pageObjects.Ads;
+import com.telliant.pageObjects.Deals;
 import com.telliant.pageObjects.HomePage;
 import com.telliant.pageObjects.LoginPage;
 import com.telliant.pageObjects.Product;
 import com.telliant.pageObjects.Service;
 import com.telliant.pageObjects.Systemsetup;
 import com.telliant.pageObjects.Vendor;
-import com.telliant.pageObjects.Ads;
-
+import com.telliant.pageObjects.Bonus;
 @Listeners(com.telliant.core.web.Reporting.class)
-public class Ads_Functionality_TC extends BaseClass implements ITestListener {
+public class Bonus_Functionality_TC extends BaseClass implements ITestListener{
 	LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 	HomePage MCWHomePage = PageFactory.initElements(driver, HomePage.class);
 	Systemsetup MCWSystemsetup= PageFactory.initElements(driver, Systemsetup.class);
@@ -28,9 +28,12 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 	Product MCWProduct = PageFactory.initElements(driver, Product.class);
 	Vendor MCWVendor = PageFactory.initElements(driver, Vendor.class);
 	Ads Ads = PageFactory.initElements(driver, Ads.class);
+	Deals Deals = PageFactory.initElements(driver, Deals.class);
+	Bonus Bonus = PageFactory.initElements(driver, Bonus.class);
+	
 	//Admin Login
-	@Test(testName = "016", description = "Verify the add ads feature via admin",priority = 1)
-	public void AddAds() throws IOException, InterruptedException, ParseException {
+	@Test(testName = "021", description = "Verify the add Bonus feature via admin",priority = 1)
+	public void AddBonus() throws IOException, InterruptedException, ParseException {
 		
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
@@ -40,37 +43,16 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
-		Ads.navigateToAds();
-		Ads.addNewAds();
-		Ads.AdSetupName();
-		Ads.LaunchDate();
-		Ads.ExpiryDate();
-		Ads.AdType();
-		Ads.selectAdType();
-		Ads.Description();
-		Ads.UploadFile();
-		Thread.sleep(3000);
+		Bonus.navigateToBonus();
+		Bonus.bonusMin();
+		Bonus.bonusMax();
+		Bonus.bonusAmount();
+		Bonus.badReviews();
+		Bonus.badReviewDedication();
+		Bonus.collisions();
+		Bonus.collisionsDedication();
 		MCWSystemsetup.savebtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup added successfully !");
-}
-	@Test(testName = "017", description = "Verify the presence of added Ads and editing the same",priority = 2)
-	public void EditAds() throws IOException, InterruptedException, ParseException {
-		Ads.searchAds();
-		MCWSystemsetup.editbtn();
-		Ads.AdSetupName();
-		Ads.Description();
-		MCWSystemsetup.savebtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup updated successfully !");
-	}
-	@Test(testName = "017", description = "Verify the presence of added Ads and editing the same",priority = 3)
-	public void DeleteAds() throws IOException, InterruptedException, ParseException {
-		Ads.searchAds();
-		MCWSystemsetup.deletebtn();
-		MCWSystemsetup.cfmpopupbtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup Deleted Successfully !");
 		loginPage.logout();
 	}
+
 }

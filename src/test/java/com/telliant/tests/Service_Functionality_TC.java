@@ -34,7 +34,7 @@ public class Service_Functionality_TC extends BaseClass implements ITestListener
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWService.navigateToService();
@@ -66,9 +66,10 @@ public class Service_Functionality_TC extends BaseClass implements ITestListener
 		
 		Thread.sleep(3000);
 		MCWService.searchService();
-		MCWSystemsetup.searchbtn();
+		//MCWSystemsetup.searchbtn();
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
 		Assert.assertEquals( getText("successmsg"),"Service deleted successfully !");
+		loginPage.logout();
 	}
 }

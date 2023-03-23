@@ -36,7 +36,7 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWMembership.navigateToMembership();
@@ -53,15 +53,6 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 	@Test(testName = "014", description = "Verify the presence of added membership and editing the same",priority = 2)
 	public void SearchMembership() throws IOException, InterruptedException {
 		
-		/*
-		 * launchURL(config.getProperty("url")); String
-		 * ValidateUrl=driver.getCurrentUrl();
-		 * ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
-		 * driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		 * loginPage.login(config.getProperty("username"),(config.getProperty("password"
-		 * ))); loginPage.proceed(); MCWHomePage.navigateToAdmin();
-		 * MCWHomePage.navigateToSystemSetup(); MCWMembership.navigateToMembership();
-		 */
 		MCWMembership.searchMembership();
 		MCWSystemsetup.editbtn();
 		MCWMembership.membershipName();
@@ -74,20 +65,13 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 	@Test(testName = "015", description = "Verify the presence of added membership and deleting the same",priority = 3)
 	public void DeleteMembership() throws IOException, InterruptedException {
 		
-		/*
-		 * launchURL(config.getProperty("url")); String
-		 * ValidateUrl=driver.getCurrentUrl();
-		 * ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
-		 * driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		 * loginPage.login(config.getProperty("username"),(config.getProperty("password"
-		 * ))); loginPage.proceed(); MCWHomePage.navigateToAdmin();
-		 * MCWHomePage.navigateToSystemSetup(); MCWMembership.navigateToMembership();
-		 */
 		MCWMembership.searchMembership();
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
+		Thread.sleep(2000);
 		waitTillElementgetsvisible("successmsg", 200, 50);
 		System.out.println("91"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Membership deleted successfully !");
+		loginPage.logout();
 	}
 }

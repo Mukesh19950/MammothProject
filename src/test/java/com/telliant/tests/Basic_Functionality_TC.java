@@ -33,7 +33,7 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWSystemsetup.AddNewLoc();
@@ -56,7 +56,7 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 	@Test(testName = "002", description = "Verify the presence of added location and editing the same",priority = 2)
 	public void Search_Edit_Locations() throws IOException, InterruptedException {
 		MCWSystemsetup.searchtxtbox();
-		MCWSystemsetup.searchbtn();
+		//MCWSystemsetup.searchbtn();
 		MCWSystemsetup.editbtn();
 		MCWSystemsetup.locName();
 		MCWSystemsetup.address();
@@ -70,11 +70,12 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 	public void Search_Delete_Location() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		MCWSystemsetup.searchtxtbox();
-		MCWSystemsetup.searchbtn();
+		//MCWSystemsetup.searchbtn();
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
 		System.out.println("78"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Location deleted successfully !");
+		loginPage.logout();
 }
 }

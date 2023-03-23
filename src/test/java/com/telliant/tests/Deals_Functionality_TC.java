@@ -38,7 +38,7 @@ public class Deals_Functionality_TC extends BaseClass implements ITestListener{
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		loginPage.proceed();
+		//loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		Deals.navigateToDeals();
@@ -53,18 +53,8 @@ public class Deals_Functionality_TC extends BaseClass implements ITestListener{
 }
 	@Test(testName = "019", description = "Verify the edit deals feature via admin",priority = 2)
 	public void EditDeals() throws IOException, InterruptedException, ParseException {
-		/*
-		 * launchURL(config.getProperty("url")); String
-		 * ValidateUrl=driver.getCurrentUrl();
-		 * ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
-		 * driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		 * loginPage.login(config.getProperty("username"),(config.getProperty("password"
-		 * ))); loginPage.proceed(); MCWHomePage.navigateToAdmin();
-		 * MCWHomePage.navigateToSystemSetup(); Deals.navigateToDeals();
-		 */
 		Deals.editDeals();
 		Deals.timeperiod();
-		//pressKeyDown("timePerioddrpdwn");
 		Deals.selectTimePeriod();
 		Deals.saveDeals();
 		waitTillElementgetsvisible("successmsg", 200, 50);
@@ -72,17 +62,8 @@ public class Deals_Functionality_TC extends BaseClass implements ITestListener{
 }
 	@Test(testName = "020", description = "Verify the delete deals feature via admin",priority = 3)
 	public void deleteDeals() throws IOException, InterruptedException, ParseException {
-		
-		/*
-		 * launchURL(config.getProperty("url")); String
-		 * ValidateUrl=driver.getCurrentUrl();
-		 * ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
-		 * driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		 * loginPage.login(config.getProperty("username"),(config.getProperty("password"
-		 * ))); loginPage.proceed(); MCWHomePage.navigateToAdmin();
-		 * MCWHomePage.navigateToSystemSetup(); Deals.navigateToDeals();
-		 */
 		Deals.deleteDeals();
 		MCWSystemsetup.cfmpopupbtn();
+		loginPage.logout();
 	}
 }
