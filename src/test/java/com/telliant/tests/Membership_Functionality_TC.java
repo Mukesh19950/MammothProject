@@ -36,7 +36,7 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		loginPage.login(config.getProperty("username"),(config.getProperty("password")));
-		//loginPage.proceed();
+		loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		MCWMembership.navigateToMembership();
