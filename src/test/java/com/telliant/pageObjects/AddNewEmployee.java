@@ -3,9 +3,13 @@ package com.telliant.pageObjects;
 import com.telliant.core.web.BaseClass;
 import com.telliant.core.web.ExcelMethods;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
 public class AddNewEmployee extends BaseClass {
 
-	public void fillEmpCreationFormMandatoryFields() throws InterruptedException {
+	public void fillEmpCreationFormMandatoryFields() throws InterruptedException, ParseException {
 
 		enterFirstName(ExcelMethods.getData("Employees", "FIRSTNAME", 1));
 		enterLastName(ExcelMethods.getData("Employees", "LASTNAME", 1));
@@ -13,8 +17,10 @@ public class AddNewEmployee extends BaseClass {
 		enterAddress(ExcelMethods.getData("Employees", "ADDRESS", 1));
 
 		// Select state
+
 		clickElement("state");
 		enterState(ExcelMethods.getData("Employees", "STATE", 1));
+		Thread.sleep(3000);
 		clickElement("selectstate");
 
 		// Select City
@@ -31,6 +37,8 @@ public class AddNewEmployee extends BaseClass {
 
 		enterEmailid(ExcelMethods.getData("Employees", "EMAIL", 1));
 
+		DateofHire();
+
 		// Selecting Roles
 		scrollToElement("roles");
 		clickElement("roles");
@@ -45,9 +53,6 @@ public class AddNewEmployee extends BaseClass {
 		selectDropdownByValue("ratelocation", ExcelMethods.getNum("Employees", "RATELOCATION", 1));
 
 		enterRate(ExcelMethods.getNum("Employees", "RATEPEROUR", 1));
-
-		enterHireDate(ExcelMethods.getNum("Employees", "DATEOFHIRE", 1));
-		clickElement("dateofhire");
 
 		addLocation();
 		saveEmployee();
@@ -130,7 +135,6 @@ public class AddNewEmployee extends BaseClass {
 		waitForElementVisible("Employees");
 		clickElement("Employees");
 		Thread.sleep(4000);
-		clickElement("AddNewEmp");
 
 	}
 
@@ -149,10 +153,11 @@ public class AddNewEmployee extends BaseClass {
 
 	public void editEmployeeFields() throws InterruptedException {
 
+		waitTillElementgetsvisible("empsearch", 200, 50);
 		enterSearch(ExcelMethods.getData("Employees", "FIRSTNAME", 1));
 		Thread.sleep(3000);
 		clickElement("empedit");
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 		scrollToElement("email");
 		enterEmailid(ExcelMethods.getData("Employees", "EMAIL", 1));
 		saveEmployee();
@@ -171,6 +176,16 @@ public class AddNewEmployee extends BaseClass {
 		clickElement("clientdelete");
 		clickElement("deleteconfirm");
 
+	}
+
+	public void DateofHire() throws ParseException {
+		SimpleDateFormat sdf1;
+		SimpleDateFormat sdf2;
+		LocalDate campaignEndDate = LocalDate.now();
+		sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		sdf2 = new SimpleDateFormat("MM/dd/yyyy");
+		String campaignsEndDate = sdf2.format(sdf1.parse(campaignEndDate.toString()));
+		type("dateofhire", campaignsEndDate);
 	}
 
 }

@@ -38,7 +38,7 @@ public class CashRegisterFunctionality_TC extends BaseClass {
 		waitTillElementgetsvisible("success", 200, 50);
 		Assert.assertEquals(getText("success"), "Cash Register updated successfully!");
 		loginPage.logout();
-	
+
 	}
 
 }
