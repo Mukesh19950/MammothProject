@@ -47,7 +47,6 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		MCWService.servicePrice();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("51"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"), "Membership added successfully !");
 }
 	@Test(testName = "014", description = "Verify the presence of added membership and editing the same",priority = 2)
@@ -59,7 +58,6 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		MCWService.servicePrice();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("71"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"), "Membership updated successfully !");
 	}
 	@Test(testName = "015", description = "Verify the presence of added membership and deleting the same",priority = 3)
@@ -70,7 +68,6 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		MCWSystemsetup.cfmpopupbtn();
 		Thread.sleep(2000);
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("91"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Membership deleted successfully !");
 		loginPage.logout();
 	}

@@ -71,17 +71,18 @@ public class Systemsetup extends WebDriverRoot {
 	public void searchtxtbox() throws InterruptedException {
 		waitForElementClickable("searchtxtbox");
 		type("searchtxtbox", ExcelMethods.getData("Sheet1", "Name", 1));
+		
 	}
 
 	public void searchbtn() throws InterruptedException {
 		waitForElementClickable("searchbtn");
-		clickElement("searchbtn");
+		clickElement("searchbtn");	
 	}
 
 	public void editbtn() throws InterruptedException {
+		Thread.sleep(3000);
 		waitForElementVisible("editbtn");
 		clickElement("editbtn");
-		Thread.sleep(3000);
 	}
 
 	public void deletebtn() {

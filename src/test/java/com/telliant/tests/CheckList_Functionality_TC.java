@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.ITestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -20,7 +21,7 @@ import com.telliant.pageObjects.Systemsetup;
 import com.telliant.pageObjects.Vendor;
 import com.telliant.pageObjects.CheckList;
 @Listeners(com.telliant.core.web.Reporting.class)
-public class CheckList_Functiopnality_TC extends BaseClass implements ITestListener{
+public class CheckList_Functionality_TC extends BaseClass implements ITestListener{
 	LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 	HomePage MCWHomePage = PageFactory.initElements(driver, HomePage.class);
 	Systemsetup MCWSystemsetup= PageFactory.initElements(driver, Systemsetup.class);
@@ -42,12 +43,38 @@ public class CheckList_Functiopnality_TC extends BaseClass implements ITestListe
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
 		CheckList.navigateToCheckList();
+		CheckList.addNewItem();
 		CheckList.checkListName();
 		CheckList.Role();
 		CheckList.selectRole();
 		CheckList.timeHH();
 		CheckList.timeMM();
 		MCWSystemsetup.savebtn();
+		waitTillElementgetsvisible("successmsg", 200, 50);
+		Assert.assertEquals( getText("successmsg"), "Check List updated successfully !");
 
 }
+	@Test(testName = "023", description = "Verify the edit checklist feature via admin",priority = 2)
+	public void EditCheckList() throws IOException, InterruptedException, ParseException {
+	
+		CheckList.selectPage();
+		CheckList.editCheckList();
+		CheckList.Role();
+		CheckList.selectRole();
+		CheckList.timeHH();
+		CheckList.timeMM();
+		MCWSystemsetup.savebtn();
+		waitTillElementgetsvisible("successmsg", 200, 100);
+		Assert.assertEquals( getText("successmsg"), "Check List updated successfully !");
+}
+
+	@Test(testName = "024", description = "Verify the delete checklist feature via admin",priority = 3)
+	public void DeleteCheckList() throws IOException, InterruptedException, ParseException {
+		
+		Thread.sleep(3000);
+		CheckList.deleteCheckList();
+		MCWSystemsetup.cfmpopupbtn();
+		waitTillElementgetsvisible("successmsg", 200, 100);
+		Assert.assertEquals( getText("successmsg"), "Check List deleted successfully !");
+	}
 }

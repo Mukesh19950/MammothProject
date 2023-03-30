@@ -11,16 +11,18 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.telliant.core.web.BaseClass;
+import com.telliant.pageObjects.Ads;
+import com.telliant.pageObjects.CheckList;
+import com.telliant.pageObjects.Deals;
 import com.telliant.pageObjects.HomePage;
 import com.telliant.pageObjects.LoginPage;
 import com.telliant.pageObjects.Product;
 import com.telliant.pageObjects.Service;
 import com.telliant.pageObjects.Systemsetup;
 import com.telliant.pageObjects.Vendor;
-import com.telliant.pageObjects.Ads;
-
+import com.telliant.pageObjects.EmployeeHandBook;
 @Listeners(com.telliant.core.web.Reporting.class)
-public class Ads_Functionality_TC extends BaseClass implements ITestListener {
+public class EmpHandbook_Functionality_TC extends BaseClass implements ITestListener{
 	LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 	HomePage MCWHomePage = PageFactory.initElements(driver, HomePage.class);
 	Systemsetup MCWSystemsetup= PageFactory.initElements(driver, Systemsetup.class);
@@ -28,9 +30,11 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 	Product MCWProduct = PageFactory.initElements(driver, Product.class);
 	Vendor MCWVendor = PageFactory.initElements(driver, Vendor.class);
 	Ads Ads = PageFactory.initElements(driver, Ads.class);
-	//Admin Login
-	@Test(testName = "016", description = "Verify the add ads feature via admin",priority = 1)
-	public void AddAds() throws IOException, InterruptedException, ParseException {
+	Deals Deals = PageFactory.initElements(driver, Deals.class);
+	CheckList CheckList = PageFactory.initElements(driver, CheckList.class);
+	EmployeeHandBook EmployeeHandBook = PageFactory.initElements(driver, EmployeeHandBook.class);
+	@Test(testName = "025", description = "Verify the add employee handbook feature via admin",priority = 1)
+	public void AddEmployeeHandbook() throws IOException, InterruptedException, ParseException {
 		
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
@@ -40,38 +44,34 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 		loginPage.proceed();
 		MCWHomePage.navigateToAdmin();
 		MCWHomePage.navigateToSystemSetup();
-		Ads.navigateToAds();
-		Ads.addNewAds();
-		Ads.AdSetupName();
-		Ads.LaunchDate();
-		Ads.ExpiryDate();
-		Ads.AdType();
-		Ads.selectAdType();
-		Ads.Description();
-		Ads.UploadFile();
-		Thread.sleep(3000);
+		EmployeeHandBook.navigateToEmpHandBook();
+		EmployeeHandBook.addNewItem();
+		EmployeeHandBook.HandBookName();
+		EmployeeHandBook.Role();
+		EmployeeHandBook.selectRole();
+		EmployeeHandBook.UploadDoc();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup added successfully !");
-}
-	@Test(testName = "017", description = "Verify the presence of added Ads and editing the same",priority = 2)
-	public void EditAds() throws IOException, InterruptedException, ParseException {
-		Ads.searchAds();
-		MCWSystemsetup.editbtn();
-		Ads.AdSetupName();
-		Ads.ExpiryDate();
-		Ads.Description();
-		MCWSystemsetup.savebtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup updated successfully !");
+		Assert.assertEquals( getText("successmsg"), "Employee HandBook added successfully !");
 	}
-	@Test(testName = "017", description = "Verify the presence of added Ads and editing the same",priority = 3)
-	public void DeleteAds() throws IOException, InterruptedException, ParseException {
-		Ads.searchAds();
-		MCWSystemsetup.deletebtn();
+	@Test(testName = "026", description = "Verify the edit employee handbook feature via admin",priority = 2)
+	public void EditEmployeeHandbook() throws IOException, InterruptedException, ParseException {
+		EmployeeHandBook.editEmpHandbook();
+		EmployeeHandBook.Role();
+		EmployeeHandBook.selectRole();
+		MCWSystemsetup.savebtn();
+		waitTillElementgetsvisible("successmsg", 200, 50);
+		Assert.assertEquals( getText("successmsg"), "Employee HandBook added successfully !");
+		
+	}
+	@Test(testName = "027", description = "Verify the delete employee handbook feature via admin",priority = 3)
+	public void DeleteEmployeeHandbook() throws IOException, InterruptedException, ParseException {
+		
+		Thread.sleep(2000);
+		EmployeeHandBook.deleteEmpHandbook();
 		MCWSystemsetup.cfmpopupbtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		Assert.assertEquals( getText("successmsg"), "Ad Setup Deleted Successfully !");
-		loginPage.logout();
+		Assert.assertEquals( getText("successmsg"), "Employee HandBook deleted successfully !");
 	}
+
 }

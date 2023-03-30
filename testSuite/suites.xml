@@ -11,6 +11,10 @@
 			<class name="com.telliant.tests.Ads_Functionality_TC" />
 			<class name="com.telliant.tests.Deals_Functionality_TC" />
 			<class name="com.telliant.tests.Bonus_Functionality_TC" />
+			<class name="com.telliant.tests.CheckList_Functionality_TC" />
+			<class name="com.telliant.tests.EmpHandbook_Functionality_TC" />
+			<class name="com.telliant.tests.TermsAndConditions_Functionality_TC" />
+			<class name="com.telliant.tests.VehicleSetup_Functionality_TC" />
 		</classes>
 	</test>
 </suite>

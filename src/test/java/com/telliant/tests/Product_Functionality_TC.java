@@ -48,7 +48,6 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 		MCWProduct.productPrice();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("52"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Product added successfully !");
 
 	}
@@ -63,7 +62,6 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 		MCWProduct.productPrice();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("77"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Product updated successfully !");
 
 	}

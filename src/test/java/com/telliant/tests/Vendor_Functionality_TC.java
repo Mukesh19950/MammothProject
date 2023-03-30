@@ -54,7 +54,6 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 		MCWVendor.vendorEmail();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("58"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Vendor added successfully !");
 
 }
@@ -68,7 +67,6 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 		MCWVendor.vendorEmail();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("71"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Vendor updated successfully !");
 	}
 	@Test(testName = "012", description = "Verify the presence of added vendor and deleting the same",priority = 3)
@@ -78,7 +76,6 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("82"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Vendor deleted successfully !");
 		loginPage.logout();
 	}

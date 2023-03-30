@@ -1,6 +1,7 @@
 package com.telliant.pageObjects;
 
 import com.github.javafaker.Faker;
+import com.telliant.core.web.ExcelMethods;
 import com.telliant.core.web.WebDriverRoot;
 
 public class CheckList extends WebDriverRoot{
@@ -13,9 +14,7 @@ public class CheckList extends WebDriverRoot{
 		clickElement("addNewItembtn");
 	}
 	public void checkListName() {
-		Faker faker = new Faker();
-		String name = faker.name().fullName();
-		type("chechListName", name);
+		type("chechListName",ExcelMethods.getData("Sheet1", "CheckListName", 1));
 	}
 	public void Role() {
 		waitForElementClickable("roleDrpdwn");
@@ -38,5 +37,18 @@ public class CheckList extends WebDriverRoot{
 		String MM=Integer.toString(number);
 		type("checkTimeMM", MM);
 	}
-
+	public void selectPage() {
+		clickElement("selectPagedrpdwn");
+	}
+	public void editCheckList() {
+		scrollToElement("editCheckListbtn");
+		waitForElementClickable("editCheckListbtn");
+		clickElement("editCheckListbtn");
+	}
+	public void deleteCheckList() {
+		scrollToElement("deleteCheckListbtn");
+		waitForElementClickable("deleteCheckListbtn");
+		clickElement("deleteCheckListbtn");
+	}
+	
 }

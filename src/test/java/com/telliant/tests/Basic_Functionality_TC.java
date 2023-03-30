@@ -47,8 +47,7 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 		MCWSystemsetup.cityinput("Alpharetta");
 		MCWSystemsetup.selectcity();
 		MCWSystemsetup.savebtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("52"+getText("successmsg"));
+		waitTillElementgetsvisible("successmsg", 200, 100);
 		Assert.assertEquals( getText("successmsg"),"Location added successfully !");
 	}
 
@@ -56,25 +55,23 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 	@Test(testName = "002", description = "Verify the presence of added location and editing the same",priority = 2)
 	public void Search_Edit_Locations() throws IOException, InterruptedException {
 		MCWSystemsetup.searchtxtbox();
-		//MCWSystemsetup.searchbtn();
+		Thread.sleep(3000);
 		MCWSystemsetup.editbtn();
 		MCWSystemsetup.locName();
 		MCWSystemsetup.address();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("64"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Location updated successfully !");
 		
 	}
 	@Test(testName = "003", description = "Verify the presence of added location and deleting the same",priority = 3)
 	public void Search_Delete_Location() throws IOException, InterruptedException {
-		Thread.sleep(3000);
+		
 		MCWSystemsetup.searchtxtbox();
-		//MCWSystemsetup.searchbtn();
+		Thread.sleep(3000);
 		MCWSystemsetup.deletebtn();
 		MCWSystemsetup.cfmpopupbtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("78"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Location deleted successfully !");
 		loginPage.logout();
 }

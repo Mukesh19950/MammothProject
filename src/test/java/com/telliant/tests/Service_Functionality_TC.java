@@ -44,21 +44,19 @@ public class Service_Functionality_TC extends BaseClass implements ITestListener
 		MCWService.selectType();
 		MCWService.servicePrice();
 		MCWSystemsetup.savebtn();
-		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("52"+getText("successmsg"));
+		waitTillElementgetsvisible("successmsg", 200, 100);
 		Assert.assertEquals( getText("successmsg"),"Service added successfully !");
 	}
 	@Test(testName = "005", description = "Verify the presence of added service and editing the same",priority = 2)
 	public void SearchService() throws IOException, InterruptedException {
 		
 		MCWService.searchService();
-		MCWSystemsetup.searchbtn();
 		MCWSystemsetup.editbtn();
+		Thread.sleep(2000);
 		MCWService.serviceName();
 		MCWService.servicePrice();
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
-		System.out.println("52"+getText("successmsg"));
 		Assert.assertEquals( getText("successmsg"),"Service updated successfully !");
 	}
 	@Test(testName = "006", description = "Verify the presence of added location and deleting the same",priority = 3)
