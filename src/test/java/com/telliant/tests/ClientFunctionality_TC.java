@@ -14,8 +14,7 @@ public class ClientFunctionality_TC extends BaseClass {
 	LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 	AddNewClient addclient = PageFactory.initElements(driver, AddNewClient.class);
 
-	int rowNo = 1;
-
+	
 	@Test(testName = "ADDCLIENT_001", description = "Verify the functionality of Add Client", priority = 1)
 
 	public void creationofNewClient() throws InterruptedException {
