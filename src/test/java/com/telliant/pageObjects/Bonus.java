@@ -24,7 +24,7 @@ public class Bonus extends WebDriverRoot{
 		Faker faker =new Faker();
 		int number = faker.number().numberBetween(100, 500);
 		String amount=Integer.toString(number);
-		type("bonusMaxtxtbox", amount);
+		type("bonusAmounttxtbox", amount);
 	}
 	public void badReviews() {
 		Faker faker =new Faker();

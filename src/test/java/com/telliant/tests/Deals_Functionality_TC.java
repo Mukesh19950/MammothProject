@@ -32,7 +32,7 @@ public class Deals_Functionality_TC extends BaseClass implements ITestListener{
 	//Admin Login
 	@Test(testName = "018", description = "Verify the add deals feature via admin",priority = 1)
 	public void AddDeals() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

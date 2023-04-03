@@ -33,7 +33,7 @@ public class CheckList_Functionality_TC extends BaseClass implements ITestListen
 	CheckList CheckList = PageFactory.initElements(driver, CheckList.class);
 	@Test(testName = "022", description = "Verify the add checklist feature via admin",priority = 1)
 	public void AddCheckList() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

@@ -30,7 +30,7 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 	//Admin Login
 	@Test(testName = "013", description = "Verify the add membership feature via admin",priority = 1)
 	public void AddMembership() throws IOException, InterruptedException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
@@ -54,6 +54,7 @@ public class Membership_Functionality_TC extends BaseClass implements ITestListe
 		
 		MCWMembership.searchMembership();
 		MCWSystemsetup.editbtn();
+		Thread.sleep(1000);
 		MCWMembership.membershipName();
 		MCWService.servicePrice();
 		MCWSystemsetup.savebtn();

@@ -62,6 +62,7 @@ public class Systemsetup extends WebDriverRoot {
 	}
 
 	public void savebtn() throws InterruptedException {
+		Thread.sleep(2000);
 		waitForElementClickable("savebtn");
 		clickElement("savebtn");
 	}

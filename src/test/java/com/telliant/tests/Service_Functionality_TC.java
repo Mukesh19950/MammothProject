@@ -28,7 +28,7 @@ public class Service_Functionality_TC extends BaseClass implements ITestListener
 	//Admin Login
 	@Test(testName = "004", description = "Verify the add service feature via admin",priority = 1)
 	public void AddService() throws IOException, InterruptedException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

@@ -39,7 +39,7 @@ public class TermsAndConditions_Functionality_TC extends BaseClass implements IT
 	
 	@Test(testName = "028", description = "Verify the add terms and conditions feature via admin",priority = 1)
 	public void AddTerms() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

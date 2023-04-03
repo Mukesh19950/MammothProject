@@ -34,7 +34,7 @@ public class Bonus_Functionality_TC extends BaseClass implements ITestListener{
 	//Admin Login
 	@Test(testName = "021", description = "Verify the add Bonus feature via admin",priority = 1)
 	public void AddBonus() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

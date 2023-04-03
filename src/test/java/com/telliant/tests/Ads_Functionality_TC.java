@@ -31,7 +31,7 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 	//Admin Login
 	@Test(testName = "016", description = "Verify the add ads feature via admin",priority = 1)
 	public void AddAds() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
@@ -64,6 +64,7 @@ public class Ads_Functionality_TC extends BaseClass implements ITestListener {
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
 		Assert.assertEquals( getText("successmsg"), "Ad Setup updated successfully !");
+		Thread.sleep(2000);
 	}
 	@Test(testName = "017", description = "Verify the presence of added Ads and editing the same",priority = 3)
 	public void DeleteAds() throws IOException, InterruptedException, ParseException {

@@ -39,7 +39,7 @@ public class VehicleSetup_Functionality_TC extends BaseClass implements ITestLis
 	VehicleSetup VehicleSetup = PageFactory.initElements(driver, VehicleSetup.class);
 	@Test(testName = "030", description = "Verify the add vehicle setup feature via admin",priority = 1)
 	public void AddVehicle() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

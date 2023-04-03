@@ -29,7 +29,7 @@ public class Vendor_Functionality_TC extends BaseClass implements ITestListener 
 	//Admin Login
 	@Test(testName = "010", description = "Verify the add vendor feature via admin",priority = 1)
 	public void AddVendor() throws IOException, InterruptedException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

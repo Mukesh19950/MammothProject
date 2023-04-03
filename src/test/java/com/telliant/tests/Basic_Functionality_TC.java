@@ -27,7 +27,7 @@ public class Basic_Functionality_TC extends BaseClass implements ITestListener{
 	//Admin Login
 	@Test(testName = "001", description = "Verify the Add Location feature via admin role",priority = 1)
 	public void Add_Location_Functionality() throws IOException, InterruptedException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

@@ -29,7 +29,7 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 	//Admin Login
 	@Test(testName = "007", description = "Verify the add product feature via admin",priority = 1)
 	public void AddProduct() throws IOException, InterruptedException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));
@@ -46,6 +46,7 @@ public class Product_Functionality_TC extends BaseClass implements ITestListener
 		MCWProduct.location();
 		MCWProduct.selectLocation();
 		MCWProduct.productPrice();
+		Thread.sleep(2000);
 		MCWSystemsetup.savebtn();
 		waitTillElementgetsvisible("successmsg", 200, 50);
 		Assert.assertEquals( getText("successmsg"),"Product added successfully !");

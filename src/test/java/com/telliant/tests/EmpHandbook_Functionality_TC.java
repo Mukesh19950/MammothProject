@@ -35,7 +35,7 @@ public class EmpHandbook_Functionality_TC extends BaseClass implements ITestList
 	EmployeeHandBook EmployeeHandBook = PageFactory.initElements(driver, EmployeeHandBook.class);
 	@Test(testName = "025", description = "Verify the add employee handbook feature via admin",priority = 1)
 	public void AddEmployeeHandbook() throws IOException, InterruptedException, ParseException {
-		
+		Thread.sleep(2000);
 		launchURL(config.getProperty("url"));
 		String ValidateUrl=driver.getCurrentUrl();
 		ValidateUrl.equalsIgnoreCase(config.getProperty("url"));

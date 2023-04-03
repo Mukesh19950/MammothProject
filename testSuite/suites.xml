@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="SmokeTest_Suite" configfailurepolicy="continue">
-	<test name="Emp_Creation">
+	<test name="Smoke_Test">
 		<classes>
 			<class name="com.telliant.tests.Basic_Functionality_TC" />
 			<class name="com.telliant.tests.Service_Functionality_TC" />
